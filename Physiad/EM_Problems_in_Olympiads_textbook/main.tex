@@ -1,0 +1,228 @@
+\documentclass[12pt,a4paper,twoside]{book}
+\usepackage[left=2cm, right=2cm, top=1.75cm, bottom=1.75cm]{geometry}
+\usepackage[utf8]{vietnam}
+\usepackage{tikz}
+\usepackage{fontawesome}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[amsthm]{ntheorem}
+\allowdisplaybreaks
+\usepackage{enumerate}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{currfile}
+\usepackage{cases}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[solcolor]{ex_test}
+\usepackage{pifont}
+\usepackage{appendix}
+\usepackage{graphics,graphicx}
+\renewcommand{\baselinestretch}{1}
+\renewenvironment{loigiai}{ {
+\setcounter{equation}{0}
+\bf\sffamily \color{blue!70!black}Lời giải. }}{\hfill {\color{blue!70!black} $\nabla$}}
+\newcommand{\hoac}[2]{\left[\begin{aligned}#1\\ #2\end{aligned}\right.}
+\newcommand{\heva}[1]{
+	\left\{\begin{aligned}#1\end{aligned}\right.}
+\usepackage[many]{tcolorbox}
+\newtheorem{dl}{\sffamily Định lý}
+\newtheorem{kq}{\sffamily Hệ quả}
+\newtheorem{tx}{\sffamily Tính chất}
+\newtheorem{bx}{\sffamily Ví dụ}
+\newtheorem{bd}{\sffamily Bổ đề}
+\newtheorem{dx}{\fontfamily{cmss}\selectfont Định nghĩa}
+\theoremstyle{definition}
+\newtheorem{vd}{\color{blue!70!black} Bài}
+\newcommand{\khungvd}[1]{%
+	\begin{tikzpicture}[baseline=(A.base),scale=1]
+	\node[fill=blue!70!black,minimum width=1cm,minimum height=0.08cm,rounded corners=0.75mm](A) {\color{white}#1};
+	\end{tikzpicture}%
+}
+\renewenvironment{vd}[1][]{
+	\refstepcounter{vd}
+	\noindent\khungvd{\noindent\bfseries\faToggleOn\sffamily~Bài \thevd}
+	\addcontentsline{toc}{section}{\protect\numberline{Bài \thevd.} \qquad #1}
+	\textbf{#1}\\
+	\setcounter{equation}{0}
+}{}
+\def\beginbox{\begin{tcolorbox}[colframe=white,colback=gray!15,breakable,boxrule=0pt,arc=0.1cm]}
+	\def\endbox{\end{tcolorbox}}
+\AtBeginEnvironment{vd}{
+	\beginbox
+	\renewcommand{\loigiai}[1]{
+	\renewcommand{\immini}[2]{
+	\setbox\imbox=\vbox{\hbox{##2}}
+	\widthimmini=\wd\imbox
+	\IMleftright{##1}{##2}
+	}
+	\endbox
+	\begin{onlysolution}
+	#1
+	\end{onlysolution}
+	\def\endbox{}
+	}
+}
+\AtEndEnvironment{vd}{
+	\endbox
+}
+\usepackage[final]{pdfpages} 
+\colorlet{tcbcol@back}{tcbcolback}
+\colorlet{tcbcol@frame}{tcbcolframe}
+\newtcolorbox{luuy}[1][]{enhanced,
+	before skip=2mm,after skip=3mm,
+	boxrule=0pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+	colback=gray!10!white,
+	colframe=white,
+	sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+	underlay={%
+		\path[fill=tcbcol@back!80!white] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[draw=tcbcol@frame,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[fill=blue!70!black,draw=none] (interior.south west) rectangle node[white]{\huge\bfseries !}
+		([xshift=4mm]interior.north west);
+	},
+	drop fuzzy shadow, #1}
+\renewcommand{\ge }{\geqslant}
+\renewcommand{\geq }{\geqslant}
+\renewcommand{\le }{\leqslant}
+\renewcommand{\leq }{\leqslant}
+\def\rt{\Rightarrow}
+\def\lrt{\Leftrightarrow}
+\def\db{\dbinom}
+\def\cm{\textbf{\sffamily Chứng minh. }}
+\def\nx{\textbf{\sffamily Nhận xét. }}
+\def\di{\displaystyle}
+\def\bode{\textbf{\sffamily Bổ đề. }}
+\def\vr{\textbf{\sffamily Ví dụ. }}
+\def\hq{\textbf{\sffamily Hệ quả. }}
+\def\tc{\textbf{\sffamily Tính chất. }}
+\def\dn{\textbf{\sffamily Định nghĩa. }}
+\def\ot{\overrightarrow}
+\allowdisplaybreaks 
+\title{\bfseries\scshape\color{blue!70!black} {Tuyển tập\\
+Các bài tập điện từ đặc sắc trên thế giới}}
+\author{\scshape \color{blue!70!black}{Tạp chí và tư liệu vật lý}}
+\date{\scshape{\today}}
+\setlength{\parindent}{0pt}
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\fancyhead[CE]{\small\fontfamily{iwona}\selectfont \MakeUppercase{Tuyển tập các bài tập điện từ đặc sắc trên thế giới}}
+\fancyhead[CO]{\fontfamily{iwona}\selectfont \MakeUppercase{Tạp chí và tư liệu vật lý}}
+\cfoot{\sffamily\circEX{\thepage}}
+\renewcommand\labelitemi{\faGenderless}
+\renewcommand\labelitemii{$\bullet$}
+\renewcommand{\labelenumi}{\small\fontfamily{lmss}\bfseries\selectfont\theenumi}
+\newcounter{CircLabel}
+\newcommand*\CircLabel{%
+	\refstepcounter{CircLabel}%
+	\hskip1em\llap{\alph{CircLabel})}}%
+\setlistsEX{label=\CircLabel}
+\AtBeginEnvironment{listEX}{\setcounter{CircLabel}{0}}
+\AtBeginEnvironment{enumEX}{\setcounter{CircLabel}{0}}
+
+%\hypersetup{
+%     colorlinks=true,
+%     linkcolor=blue!70!black,
+%     filecolor=blue!70!black,
+%     citecolor = black,      
+%     urlcolor=blue!70!black,
+%     }
+
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\tiph}[4]{\int_{#1}^{#2} #3 \mathrm{d} #4}
+\newcommand{\tron}[1]{\left( #1 \right)}
+\newcommand{\dd}{\mathrm{d}}
+\def\lrt{\Leftrightarrow}
+\newcommand{\abs}[1]{\left|  #1 \right|}
+\newcommand{\dv}[1]{\ \mathrm{#1}}
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+\usepackage{lipsum}
+\usepackage{tikz-3dplot}
+\usepackage{tikz}
+
+
+% \usepackage{titledot}
+% \titleformat{\section}
+% {\fontfamily{cmss}\selectfont \Large\bfseries\color{blue!60!black}}{\thesection.}{0.75em}{
+% 	\setcounter{bx}{0}
+% }
+% \titleformat{\subsection}
+% {\fontfamily{cmss}\selectfont \large\bfseries\color{blue!60!black}}{\thesubsection.}{1em}{
+% 	\setcounter{bx}{0}
+% }
+% \titleformat{\subsubsection}
+% {\fontfamily{cmss}\selectfont \large\bfseries\color{blue!60!black}}{\thesubsubsection.}{1em}{
+% }
+% \titleformat{\chapter}[display]
+% {\centering\sffamily\huge\bfseries\color{blue!60!black}}{\chaptertitlename \,\thechapter}{10pt}{\Huge}
+% \titlespacing*{\chapter}
+% {0pt}{20pt}{30pt}
+% \tdplotsetmaincoords{80}{70}
+% \usetikzlibrary{ decorations.markings}
+% \renewcommand{\theequation}{ \arabic{equation}}
+% \usepackage[titles]{tocloft}
+% \usepackage{titletoc}
+% \renewcommand{\theequation}{ \arabic{equation}}
+% \renewcommand\cftchapfont{\normalfont}
+% \renewcommand\cftchappagefont{\normalfont}
+% \AtBeginDocument{\renewcommand\contentsname{Mục lục}}
+% \contentsmargin[1cm]{0cm}
+% \titlecontents{chapter}[0em]{\vskip12pt\bfseries\sffamily}
+% {\thecontentslabel\enspace}
+% {\hspace{1.05em}}
+% { \hfill\contentspage}[\vskip 6pt]
+% \titlecontents{section}[1em]{\sffamily}
+% {\thecontentslabel\enspace}
+% {}
+% {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 4pt]
+% \titlecontents{subsection}[2.7em]{\sffamily}
+% {\thecontentslabel\enspace}
+% {}
+% {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 3pt]
+\usepackage{titletoc}
+\titlecontents*{chapter}
+  [0pt]
+  {\addvspace{1em}}
+  {\bfseries\chaptername\ \thecontentslabel.\quad} 
+  {}
+  {\bfseries\hfill\contentspage}
+
+\makeatletter
+\AtBeginDocument{
+    \renewcommand\@listi{
+    \leftmargin \leftmargini
+    \topsep 1pt
+    \partopsep 1pt
+    \parsep 1.15pt
+    \itemsep 1.15pt
+    }
+}
+\makeatother
+\begin{document} 
+
+\numberwithin{vd}{chapter}
+\setlength{\abovedisplayskip}{3.75pt}
+\setlength{\belowdisplayskip}{3.75pt}
+%%%\input{titlepage}
+\maketitle
+\input{Lythuyet-Loinoidau/LythuyetLoinoidau} 
+\tableofcontents
+\input{Lythuyet/Lythuyet}
+\input{Tinh Dien/TinhDien}
+%\input{Vatdan-Dienmoi-Dientham/VatdanDienmoiDientham}
+%\input{DienTuTruong-CUDT/DientutruongCamungtu}
+%\input{Dongdien-Machdaodong/DongdienMachdaodong}
+%\input{Maxwell-Song/MaxwellSong}
+%\input{TuongDoiTinh/TuongDoiTinh}
+%\input{Baitaptonghop/Baitaptonghop}
+%\input{Nguon}
+%\input{Vatdan-Dienmoi-Dientham/Nam}
+\end{document}
+
+

@@ -1,0 +1,69 @@
+\begin{titlepage} 
+{\Large\textsc{\fontfamily{cmr}\selectfont\LaTeX\, bởi PhySiad}}\\
+\\
+{\large\fontfamily{cmr}\selectfont
+    Nguyễn Hoàng Nam (chủ biên) $-$ Trần Mỹ Quyên \\
+	Mai Vũ Tuệ Danh $-$ Ngô Minh Ngọc \\
+	Trần Huy Hoàng Anh $-$ Đỗ Xuân Sang\\
+	Nguyễn Đức Trung $-$ Trần Dương Chính}
+\vspace{3.25cm}\\
+{\scshape\fontsize{30}{30}\fontfamily{cmr}\selectfont Tuyển Tập}\\
+\vspace{0.25cm}\\
+{\scshape\fontsize{45}{45}\fontfamily{cmr}\selectfont Các Bài Tập Điện Từ}
+\vspace{0.25cm}
+\begin{flushright}
+{\scshape\fontsize{30}{30}\fontfamily{cmr}\selectfont Trong các kì thi Olympic}
+\end{flushright}
+\vspace{0.75cm}
+\begin{center}
+\begin{tikzpicture}
+[scale= 1.15,decoration={markings, 
+	mark= at position 0.7 with {\arrow[]{latex}}}
+] 
+\path[] (-2,-3) rectangle (13.5,5);
+\begin{scope}[transform canvas={rotate=10}]
+   \foreach \j in {1.25,5.75,9.75}
+{
+\draw[xshift=\j cm] (0,0) ellipse(0.2 and 0.5);
+    \begin{scope}[xshift=\j cm,tdplot_main_coords]
+        \foreach \angle in {0,45,...,180}
+{
+\tdplotsetcoord{P2}{2}{\angle}{-40}
+\tdplotsetcoord{P1}{0.5}{\angle}{-40}
+\draw[thick,postaction={decorate}] (P1) -- (P2);
+}
+    \end{scope}
+}
+\draw [top color=blue!60!white,
+			bottom color=blue!60!white,
+			middle color=cyan,
+			opacity=0.92] (0,-0.5) -- ++(12,0) 
+	arc(-90:90:0.2 and 0.5) -- ++(-12,0) 
+	arc(90:-90:0.2 and 0.5)--cycle;
+
+\draw[fill=cyan!10] (0,0) ellipse(0.2 and 0.5);
+\foreach \j in {1,3.5,7,11} 
+{
+	\node at (\j,0){$+$};
+}
+\foreach \j in {1.25,5.75,9.75}
+{
+    \begin{scope}[xshift=\j cm,tdplot_main_coords]
+        \foreach \angle in {180,225,...,360}
+{
+\tdplotsetcoord{P2}{2}{\angle}{-40}
+\tdplotsetcoord{P1}{0.5}{\angle}{-40}
+\draw[thick,postaction={decorate}] (P1) -- (P2);
+}
+    \end{scope}
+}
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\vspace{0.4cm}
+\vfill
+\begin{center}
+    {\scshape \fontsize{20}{20} \fontfamily{cmr}\selectfont Nhà xuất bản đại học quốc gia Hà Nội}
+\end{center}
+\vspace{0.2cm}
+\end{titlepage}
